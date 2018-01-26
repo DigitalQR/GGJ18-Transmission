@@ -9,10 +9,10 @@ using UnityEngine;
 public class InputProfile : MonoBehaviour
 {
 
-	private int mInternalID = -1;
+	private int _ID = -1;
 	public int ID
 	{
-		get { return mInternalID; }
+		get { return _ID; }
 	}
 
 	private bool[] mCurrentState = new bool [4];
@@ -39,7 +39,7 @@ public class InputProfile : MonoBehaviour
 	{
 		mCurrentState.CopyTo(mPreviousState, 0);
 
-		if (mInternalID == -1)
+		if (ID == -1)
 		{
 			mCurrentState[0] = false;
 			mCurrentState[1] = false;
@@ -55,10 +55,10 @@ public class InputProfile : MonoBehaviour
 					// TODO - Read any input
 					if (Input.GetButton("Gamepad " + id + " A"))
 					{
-						mInternalID = id;
+						_ID = id;
 						AvaliableIDs.Remove(id);
 						bRequiresAssign = false;
-						Debug.Log("InputProfile(" + mInternalID + ") assigned to " + gameObject.name + " (" + AvaliableIDs.Count + " profiles remaining)");
+						Debug.Log("InputProfile(" + ID + ") assigned to " + gameObject.name + " (" + AvaliableIDs.Count + " profiles remaining)");
 						break;
 					}
 				}
@@ -66,14 +66,15 @@ public class InputProfile : MonoBehaviour
 		}
 		else
 		{
-			mCurrentState[(int)Button.A] = Input.GetButton("Gamepad " + mInternalID + " A");
-			mCurrentState[(int)Button.B] = Input.GetButton("Gamepad " + mInternalID + " B");
-			mCurrentState[(int)Button.Start] = Input.GetButton("Gamepad " + mInternalID + " Start");
-			mCurrentState[(int)Button.Select] = Input.GetButton("Gamepad " + mInternalID + " Select");
+			mCurrentState[(int)Button.A] = Input.GetButton("Gamepad " + ID + " A");
+			mCurrentState[(int)Button.B] = Input.GetButton("Gamepad " + ID + " B");
+			mCurrentState[(int)Button.Start] = Input.GetButton("Gamepad " + ID + " Start");
+			mCurrentState[(int)Button.Select] = Input.GetButton("Gamepad " + ID + " Select");
 
-			mAxisInput.x = Input.GetAxis("Gamepad " + mInternalID + " Horizontal");
-			mAxisInput.y = Input.GetAxis("Gamepad " + mInternalID + " Vertical");
-			mAxisInput.Normalize();
+			mAxisInput.x = Input.GetAxis("Gamepad " + ID + " Horizontal");
+			mAxisInput.y = Input.GetAxis("Gamepad " + ID + " Vertical");
+			if (mAxisInput.sqrMagnitude > 1.0f)
+				mAxisInput.Normalize();
 		}
 	}
 
@@ -82,7 +83,7 @@ public class InputProfile : MonoBehaviour
 	/// </summary>
 	public void Bind()
 	{
-		if(mInternalID == -1)
+		if(ID == -1)
 			bRequiresAssign = true;
 	}
 
@@ -91,7 +92,7 @@ public class InputProfile : MonoBehaviour
 	/// </summary>
 	public void Unbind()
 	{
-		mInternalID = -1;
+		_ID = -1;
 		bRequiresAssign = false;
 	}
 
@@ -113,6 +114,7 @@ public class InputProfile : MonoBehaviour
 	{
 		return !mCurrentState[(int)button] && mPreviousState[(int)button];
 	}
+
 	public Vector2 GetInputVector()
 	{
 		return mAxisInput;
