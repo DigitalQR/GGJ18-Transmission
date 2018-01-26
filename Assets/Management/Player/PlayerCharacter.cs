@@ -35,12 +35,19 @@ public class PlayerCharacter : MonoBehaviour
 	{
 		mVelocity += new Vector3(inputProfile.GetInputVector().x, 0, inputProfile.GetInputVector().y) * mMoveSpeed * Time.deltaTime;
 
+		// Decay velocity
 		mVelocity *= mVelocityPersistance;
+		// Cap speed
 		if (mVelocity.sqrMagnitude > mMaxVelocity)
 		{
 			mVelocity.Normalize();
 			mVelocity *= mMaxVelocity;
 		}
+
+		// Rotate in direction of velocity
+		if (mVelocity.sqrMagnitude > 0.01)
+			transform.rotation = Quaternion.LookRotation(mVelocity.normalized);
+		
 
 		mCharacterController.Move(mVelocity * Time.deltaTime);
 
