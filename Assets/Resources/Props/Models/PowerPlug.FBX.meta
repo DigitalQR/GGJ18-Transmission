@@ -1,28 +1,18 @@
 fileFormatVersion: 2
-guid: 06f36ee0773399f47bf80afc01b1c7ca
-timeCreated: 1517067572
+guid: e192e40ff5bfcb74bbf18afa2cda03ea
+timeCreated: 1517068334
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
-    100000: Plug
-    100002: //RootNode
-    100004: Socket
-    400000: Plug
-    400002: //RootNode
-    400004: Socket
-    2100000: Body
+    100000: //RootNode
+    400000: //RootNode
+    2100000: Metal
     2100002: Yellow
     2100004: Dark
-    2100006: Metal
-    2300000: Plug
-    2300002: Socket
-    2300004: //RootNode
-    3300000: Plug
-    3300002: Socket
-    3300004: //RootNode
-    4300000: Socket
-    4300002: Plug
+    2300000: //RootNode
+    3300000: //RootNode
+    4300000: Plug
     9500000: //RootNode
   externalObjects: {}
   materials:
@@ -59,7 +49,7 @@ ModelImporter:
     addColliders: 0
     importVisibility: 1
     importBlendShapes: 1
-    importCameras: 0
+    importCameras: 1
     importLights: 1
     swapUVChannels: 0
     generateSecondaryUV: 0
