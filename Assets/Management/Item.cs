@@ -6,6 +6,10 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class Item : MonoBehaviour
 {
+	private static bool AssignedIDs = false;
+	private int _ID;
+	public int ID { get { return ID; } }
+
 	private Rigidbody _mBody;
 	private Rigidbody mBody
 	{
@@ -27,6 +31,19 @@ public class Item : MonoBehaviour
 	public Item[] HammerOutput;
 	public Item[] ChiselOutput;
 
+
+	void Start()
+	{
+		if (!AssignedIDs)
+		{
+			Item[] items = Resources.LoadAll<Item>("Items");
+			for (int i = 0; i < items.Length; ++i)
+				items[i]._ID = i;
+
+			Debug.Log("Discovered " + items.Length + " items");
+			AssignedIDs = true;
+		}
+	}
 
 	/// <summary>
 	/// Drops this item, so that is may freely interact

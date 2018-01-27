@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 26ea9013462aa924dba1c692d8dcc656
-timeCreated: 1517051047
+guid: f27ec63b0978ee94ca20e4264d471500
+timeCreated: 1517056560
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
@@ -11,9 +11,8 @@ ModelImporter:
     400000: Box001
     400002: Box002
     400004: //RootNode
-    2100000: 02 - Default
+    2100000: glassbench
     2100002: 03 - Default
-    2100004: glassbench
     2300000: Box001
     2300002: Box002
     3300000: Box001
@@ -21,17 +20,7 @@ ModelImporter:
     4300000: Box001
     4300002: Box002
     9500000: //RootNode
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: 03 - Default
-    second: {fileID: 2100000, guid: 0aa26058bdefda94f8e66e41dce95875, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: glassbench
-    second: {fileID: 2100000, guid: 722dad9c46e16794a8cf9a4c48eea0dd, type: 2}
+  externalObjects: {}
   materials:
     importMaterials: 1
     materialName: 0
