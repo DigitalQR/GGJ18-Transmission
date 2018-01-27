@@ -24,8 +24,6 @@ public class Item : MonoBehaviour
 	private bool _isDropped = true;
 	public bool isDropped { get { return _isDropped; } }
 
-	public bool physicsEnabled { get { return mBody.detectCollisions; } }
-
 
 	public Item[] SmeltOutput;
 	public Item[] HammerOutput;

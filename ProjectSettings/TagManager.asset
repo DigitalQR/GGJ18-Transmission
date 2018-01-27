@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Item
   - Interact Source
+  - Enemy
   layers:
   - Default
   - TransparentFX

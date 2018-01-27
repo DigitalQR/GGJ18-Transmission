@@ -69,8 +69,9 @@ public class PlayerCharacter : MonoBehaviour
 			{
 				bool hasInteracted = false;
 
+
 				// Find interaction infront of player
-				foreach (Collider collider in Physics.OverlapBox(transform.position, new Vector3(0.2f, 5.0f, 0.5f), transform.rotation))
+				foreach (Collider collider in Physics.OverlapBox(transform.position, new Vector3(0.2f, 5.0f, 0.8f), transform.rotation))
 				{
 					// Check to see if it's an interaction
 					InteractableBehaviour interaction = collider.GetComponent<InteractableBehaviour>();
@@ -86,7 +87,7 @@ public class PlayerCharacter : MonoBehaviour
 					{
 						Item item = collider.GetComponent<Item>();
 						// Only check items on ground
-						if (item != null && item.physicsEnabled)
+						if (item != null && item.isDropped)
 						{
 							heldItem = item;
 							heldItem.Place(itemHoldLocation);
@@ -97,11 +98,11 @@ public class PlayerCharacter : MonoBehaviour
 				}
 
 				// Attempt to drop item in hands
-				if (!hasInteracted && heldItem != null)
+				/*if (!hasInteracted && heldItem != null)
 				{
 					heldItem.Drop();
 					heldItem = null;
-				}
+				}*/
 				
 			}
 		}
