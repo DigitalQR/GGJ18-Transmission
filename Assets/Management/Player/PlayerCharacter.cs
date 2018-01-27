@@ -25,6 +25,7 @@ public class PlayerCharacter : MonoBehaviour
 	public InteractableBehaviour currentInteraction;
 	[System.NonSerialized]
 	public Item heldItem;
+	public Transform itemHoldLocation;
 
 
 	public void OnSpawn(PlayerController parent)
@@ -65,12 +66,11 @@ public class PlayerCharacter : MonoBehaviour
 
 		// Update interaction
 		{
+			Debug.Log(currentInteraction);
 			if (currentInteraction != null)
 			{
 				if (inputProfile.GetKeyPressed(InputProfile.Button.A))
 					currentInteraction.Interact(this);
-
-				currentInteraction = null; // Clear current interaction (Will get set each frame if valid)
 			}
 			else
 			{
@@ -91,8 +91,9 @@ public class PlayerCharacter : MonoBehaviour
 								{
 									heldItem = item;
 									item.DisablePhysics();
-									item.transform.parent = transform;
-									// TODO - Put in players hands
+									item.transform.parent = itemHoldLocation;
+									item.transform.localPosition = new Vector3(0, 0, 0);
+									item.transform.localRotation = Quaternion.identity;
 									break;
 								}
 							}

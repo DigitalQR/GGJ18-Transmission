@@ -17,11 +17,10 @@ public class Item : MonoBehaviour
 
 	public void EnablePhysics()
 	{
-		mBody.isKinematic = false;
+		mBody.detectCollisions = true;
 	}
 	public void DisablePhysics()
 	{
-		mBody.isKinematic = true;
+		mBody.detectCollisions = false;
 	}
-
 }
