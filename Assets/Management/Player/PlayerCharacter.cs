@@ -66,7 +66,6 @@ public class PlayerCharacter : MonoBehaviour
 
 		// Update interaction
 		{
-			Debug.Log(currentInteraction);
 			if (currentInteraction != null)
 			{
 				if (inputProfile.GetKeyPressed(InputProfile.Button.A))

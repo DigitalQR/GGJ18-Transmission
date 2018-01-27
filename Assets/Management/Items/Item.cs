@@ -6,7 +6,17 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class Item : MonoBehaviour
 {
-	private Rigidbody mBody;
+	private Rigidbody _mBody;
+	private Rigidbody mBody
+	{
+		get
+		{
+			if (_mBody == null)
+				_mBody = GetComponent<Rigidbody>();
+			return _mBody;
+		}
+	}
+
 	private bool _isDropped = true;
 	public bool isDropped { get { return _isDropped; } }
 
@@ -17,11 +27,6 @@ public class Item : MonoBehaviour
 	public Item[] HammerOutput;
 	public Item[] ChiselOutput;
 
-
-	void Start ()
-	{
-		mBody = GetComponent<Rigidbody>();	
-	}
 
 	/// <summary>
 	/// Drops this item, so that is may freely interact

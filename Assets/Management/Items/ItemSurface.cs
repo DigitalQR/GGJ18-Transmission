@@ -6,6 +6,7 @@ public class ItemSurface : InteractableBehaviour
 {
 	public Transform mDisplayLocation;
 	private Item mHeldItem;
+	public bool holdingItem { get { return mHeldItem != null; } }
 
 
 	public override void Interact(PlayerCharacter character)
@@ -27,5 +28,32 @@ public class ItemSurface : InteractableBehaviour
 			character.heldItem = null;
 			mHeldItem.Place(mDisplayLocation);
 		}
+	}
+
+	protected virtual void OnCollisionEnter(Collision coll)
+	{
+		// Attempt to place item on this surface
+		if (coll.gameObject.CompareTag("Item") && mHeldItem == null)
+		{
+			mHeldItem = coll.gameObject.GetComponent<Item>();
+			mHeldItem.Place(mDisplayLocation);
+		}
+	}
+
+	/// <summary>
+	/// Attempt to place the item on this surface
+	/// </summary>
+	/// <param name="item"></param>
+	/// <returns>If item gets placed corrected</returns>
+	public bool AttemptPlace(Item item)
+	{
+		if (mHeldItem == null)
+		{
+			mHeldItem = item;
+			mHeldItem.Place(mDisplayLocation);
+			return true;
+		}
+
+		return false;
 	}
 }

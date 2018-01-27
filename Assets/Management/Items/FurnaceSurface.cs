@@ -6,6 +6,8 @@ public class FurnaceSurface : InteractableBehaviour
 {
 	private Item currentRecipe;
 	private Queue<Item> outputItems = new Queue<Item>();
+	[SerializeField]
+	private ItemSurface[] outputTiles;
 
 	[SerializeField]
 	private float totalCookTime = 3.0f;
@@ -43,10 +45,19 @@ public class FurnaceSurface : InteractableBehaviour
 		}
 
 		// Post output
-		// TODO - Put on conveyor
 		if (outputItems.Count != 0)
 		{
-			Instantiate(outputItems.Dequeue().gameObject);
+			foreach (ItemSurface surface in outputTiles)
+			{
+				if (!surface.holdingItem)
+				{
+					Item item = Instantiate(outputItems.Dequeue().gameObject).GetComponent<Item>();
+					if (surface.AttemptPlace(item))
+						break;
+					else
+						Destroy(item.gameObject);
+				}
+			}
 		}
 	}
 }
