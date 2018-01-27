@@ -165,6 +165,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b587a033004a2b46beb720bfc4e6712, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _ID: 6
   SmeltOutput:
   - {fileID: 114226216445575772, guid: 93f1016068be09545a18fc24832dc7fa, type: 2}
   - {fileID: 114140284794566898, guid: 9d413b6386dfa214b9ad8472e5ec3e39, type: 2}

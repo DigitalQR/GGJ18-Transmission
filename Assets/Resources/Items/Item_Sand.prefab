@@ -165,6 +165,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b587a033004a2b46beb720bfc4e6712, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _ID: 7
   SmeltOutput:
   - {fileID: 114963826995077888, guid: a002d4075140aa444a7156ed95a60f03, type: 2}
   HammerOutput: []

@@ -1,31 +1,18 @@
 fileFormatVersion: 2
-guid: e2f7cdf08fa8a344b8289f693163f0dc
-timeCreated: 1517056559
+guid: c28ebfc8468de5f4f95f4cdc0797a19f
+timeCreated: 1517079419
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
     100000: //RootNode
-    100002: Buttonm
-    100004: Plinth
     400000: //RootNode
-    400002: Buttonm
-    400004: Plinth
     2100000: plinth
     2100002: 02 - Default
-    2100004: '03 - Default Slot #5'
-    2100006: '03 - Default Slot #4'
-    2100008: '03 - Default Slot #6'
-    2100010: '03 - Default Slot #3'
-    2300000: Buttonm
-    2300002: Plinth
-    2300004: //RootNode
-    3300000: Buttonm
-    3300002: Plinth
-    3300004: //RootNode
-    4300000: Plinth
-    4300002: Buttonm
-    4300004: Box001
+    2100004: '03 - Default Slot #3'
+    2300000: //RootNode
+    3300000: //RootNode
+    4300000: Cylinder001
     9500000: //RootNode
   externalObjects: {}
   materials:

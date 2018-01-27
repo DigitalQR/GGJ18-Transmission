@@ -20,9 +20,7 @@ public class PlayerCharacter : MonoBehaviour
 	public float mMaxVelocity = 15.0f;
 	private Vector3 mVelocity;
 
-
-	[System.NonSerialized]
-	public InteractableBehaviour currentInteraction;
+	
 	[System.NonSerialized]
 	public Item heldItem;
 	public Transform itemHoldLocation;
@@ -66,42 +64,45 @@ public class PlayerCharacter : MonoBehaviour
 
 		// Update interaction
 		{
-			if (currentInteraction != null)
+			// Attempt to interact
+			if (inputProfile.GetKeyPressed(InputProfile.Button.A))
 			{
-				if (inputProfile.GetKeyPressed(InputProfile.Button.A))
-					currentInteraction.Interact(this);
-			}
-			else
-			{
-				// Attempt to pickup nearby object/drop held
-				if (inputProfile.GetKeyPressed(InputProfile.Button.A))
+				bool hasInteracted = false;
+
+				// Find interaction infront of player
+				foreach (Collider collider in Physics.OverlapBox(transform.position, new Vector3(0.2f, 5.0f, 0.5f), transform.rotation))
 				{
-					// Pickup
+					// Check to see if it's an interaction
+					InteractableBehaviour interaction = collider.GetComponent<InteractableBehaviour>();
+					if (interaction != null)
+					{
+						interaction.Interact(this);
+						hasInteracted = true;
+						break;
+					}
+
+					// Check to see if it's an item to pickup
 					if (heldItem == null)
 					{
-						foreach (Item item in FindObjectsOfType<Item>())
+						Item item = collider.GetComponent<Item>();
+						// Only check items on ground
+						if (item != null && item.physicsEnabled)
 						{
-							// Only check items on ground
-							if (item.physicsEnabled)
-							{
-								float sqrDistance = (item.transform.position - transform.position).sqrMagnitude;
-
-								if (sqrDistance <= 1.5f * 1.5f)
-								{
-									heldItem = item;
-									heldItem.Place(itemHoldLocation);
-									break;
-								}
-							}
+							heldItem = item;
+							heldItem.Place(itemHoldLocation);
+							hasInteracted = true;
+							break;
 						}
 					}
-					// Drop
-					else
-					{
-						heldItem.Drop();
-						heldItem = null;
-					}
 				}
+
+				// Attempt to drop item in hands
+				if (!hasInteracted && heldItem != null)
+				{
+					heldItem.Drop();
+					heldItem = null;
+				}
+				
 			}
 		}
 
