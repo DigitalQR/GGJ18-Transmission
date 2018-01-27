@@ -72,6 +72,8 @@ GameObject:
   - component: {fileID: 33413050079011874}
   - component: {fileID: 23185348271926282}
   - component: {fileID: 65087722487191940}
+  - component: {fileID: 65165313261998408}
+  - component: {fileID: 114452650992745728}
   m_Layer: 0
   m_Name: Body
   m_TagString: Untagged
@@ -761,6 +763,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.9, y: 0.83, z: 1}
   m_Center: {x: 0.02, y: 0, z: 0.4}
+--- !u!65 &65165313261998408
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1309025530790828}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.9, y: 1.63, z: 0.63}
+  m_Center: {x: -0.15934779, y: -0.007440198, z: 0.4551117}
 --- !u!65 &65628486494887744
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -803,3 +817,32 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   laserBase: {fileID: 4111033943745738}
   laserBody: {fileID: 4052226896782300}
+--- !u!114 &114452650992745728
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1309025530790828}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c40c1c26768c204da464b155bc5ec83, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BodyParts:
+  - {fileID: 1811002114652142}
+  - {fileID: 1660308422012408}
+  - {fileID: 1106807845432412}
+  ConeParts:
+  - {fileID: 1335111925220680}
+  - {fileID: 1765210656312420}
+  - {fileID: 1698795549540546}
+  RequiredBodyParts:
+  - {fileID: 114116959080986420, guid: d089fe20b5c91c14a9d74d059792ffe9, type: 2}
+  - {fileID: 114116959080986420, guid: d089fe20b5c91c14a9d74d059792ffe9, type: 2}
+  - {fileID: 114116959080986420, guid: d089fe20b5c91c14a9d74d059792ffe9, type: 2}
+  RequiredConeParts:
+  - {fileID: 114585463290142520, guid: 2d7413b1540356e4cad6aafd8df9cf06, type: 2}
+  - {fileID: 114585463290142520, guid: 2d7413b1540356e4cad6aafd8df9cf06, type: 2}
+  - {fileID: 114585463290142520, guid: 2d7413b1540356e4cad6aafd8df9cf06, type: 2}
+  RequiredHiddenParts:
+  - {fileID: 114162446989281460, guid: c679dafe06ef6f749b4b03279bcafb69, type: 2}
