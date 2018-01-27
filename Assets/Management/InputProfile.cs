@@ -20,7 +20,7 @@ public class InputProfile : MonoBehaviour
 	private Vector2 mAxisInput;
 
 	private bool bRequiresAssign = false;
-	private static HashSet<int> AvaliableIDs = new HashSet<int>{ 0, 1, 2, 3 };
+	private static HashSet<int> AvaliableIDs = new HashSet<int>{ 0, 1, 2, 3, 4 };
 
 
 	public enum Button

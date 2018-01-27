@@ -17,7 +17,7 @@ public class FurnaceSurface : InteractableBehaviour
 	public override void Interact(PlayerCharacter character)
 	{
 		// Attempt to smelt item
-		if (character.heldItem.SmeltOutput.Length != 0 && currentRecipe == null && outputItems.Count == 0)
+		if (character.heldItem != null && character.heldItem.SmeltOutput.Length != 0 && currentRecipe == null && outputItems.Count == 0)
 		{
 			currentRecipe = character.heldItem;
 			currentRecipe.gameObject.SetActive(false);
