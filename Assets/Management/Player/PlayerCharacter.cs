@@ -47,7 +47,7 @@ public class PlayerCharacter : MonoBehaviour
 			// Decay velocity
 			mVelocity *= Mathf.Clamp01(1.0f - mVelocityDecay * Time.deltaTime);
 			// Cap speed
-			if (mVelocity.sqrMagnitude > mMaxVelocity)
+			if (mVelocity.sqrMagnitude > mMaxVelocity * mMaxVelocity)
 			{
 				mVelocity.Normalize();
 				mVelocity *= mMaxVelocity;
