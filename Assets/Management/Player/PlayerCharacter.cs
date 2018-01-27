@@ -23,6 +23,8 @@ public class PlayerCharacter : MonoBehaviour
 
 	[System.NonSerialized]
 	public InteractableBehaviour currentInteraction;
+	[System.NonSerialized]
+	public Item heldItem;
 
 
 	public void OnSpawn(PlayerController parent)
@@ -70,6 +72,42 @@ public class PlayerCharacter : MonoBehaviour
 
 				currentInteraction = null; // Clear current interaction (Will get set each frame if valid)
 			}
+			else
+			{
+				// Attempt to pickup nearby object/drop held
+				if (inputProfile.GetKeyPressed(InputProfile.Button.A))
+				{
+					// Pickup
+					if (heldItem == null)
+					{
+						foreach (Item item in FindObjectsOfType<Item>())
+						{
+							// Only check items on ground
+							if (item.physicsEnabled)
+							{
+								float sqrDistance = (item.transform.position - transform.position).sqrMagnitude;
+
+								if (sqrDistance <= 1.5f * 1.5f)
+								{
+									heldItem = item;
+									item.DisablePhysics();
+									item.transform.parent = transform;
+									// TODO - Put in players hands
+									break;
+								}
+							}
+						}
+					}
+					// Drop
+					else
+					{
+						heldItem.EnablePhysics();
+						heldItem.transform.parent = null;
+						heldItem = null;
+					}
+				}
+			}
 		}
+
 	}
 }
