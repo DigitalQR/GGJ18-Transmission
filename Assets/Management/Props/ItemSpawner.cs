@@ -10,19 +10,11 @@ public class ItemSpawner : InteractableBehaviour
 
 	public override void Interact(PlayerCharacter character)
 	{
-		Debug.Log("A");
 		if (!targetSurface.holdingItem)
 		{
-			Debug.Log("B");
 			Item item = Instantiate(targetItem.gameObject).GetComponent<Item>();
 			if (!targetSurface.AttemptPlace(item))
-			{
-				Debug.Log("C");
 				Destroy(item.gameObject);
-			}
-			else
-
-				Debug.Log("D");
 		}
 	}
 }
