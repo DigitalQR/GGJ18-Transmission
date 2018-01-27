@@ -16,9 +16,7 @@ public class ItemSurface : InteractableBehaviour
 			if (mHeldItem != null)
 			{
 				character.heldItem = mHeldItem;
-				character.heldItem.transform.parent = character.itemHoldLocation;
-				character.heldItem.transform.localPosition = new Vector3(0, 0, 0);
-				character.heldItem.transform.localRotation = Quaternion.identity;
+				character.heldItem.Place(character.itemHoldLocation);
 				mHeldItem = null;
 			}
 		}
@@ -27,10 +25,7 @@ public class ItemSurface : InteractableBehaviour
 		{
 			mHeldItem = character.heldItem;
 			character.heldItem = null;
-
-			mHeldItem.transform.parent = mDisplayLocation;
-			mHeldItem.transform.localPosition = new Vector3(0, 0, 0);
-			mHeldItem.transform.rotation = Quaternion.identity;
+			mHeldItem.Place(mDisplayLocation);
 		}
 	}
 }

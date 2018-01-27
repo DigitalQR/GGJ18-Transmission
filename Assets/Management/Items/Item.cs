@@ -7,6 +7,9 @@ using UnityEngine;
 public class Item : MonoBehaviour
 {
 	private Rigidbody mBody;
+	private bool _isDropped = true;
+	public bool isDropped { get { return _isDropped; } }
+
 	public bool physicsEnabled { get { return mBody.detectCollisions; } }
 
 
@@ -15,12 +18,28 @@ public class Item : MonoBehaviour
 		mBody = GetComponent<Rigidbody>();	
 	}
 
-	public void EnablePhysics()
+	/// <summary>
+	/// Drops this item, so that is may freely interact
+	/// </summary>
+	public void Drop()
 	{
-		mBody.detectCollisions = true;
+		if (!_isDropped)
+		{
+			mBody.detectCollisions = true;
+			transform.parent = null;
+			_isDropped = true;
+		}
 	}
-	public void DisablePhysics()
+
+	/// <summary>
+	/// Place the item under this transform
+	/// </summary>
+	public void Place(Transform trans)
 	{
-		mBody.detectCollisions = false;
+		transform.parent = trans;
+		transform.localPosition = new Vector3(0, 0, 0);
+		transform.localRotation = Quaternion.identity;
+		_isDropped = false;
 	}
+
 }

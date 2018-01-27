@@ -90,10 +90,7 @@ public class PlayerCharacter : MonoBehaviour
 								if (sqrDistance <= 1.5f * 1.5f)
 								{
 									heldItem = item;
-									item.DisablePhysics();
-									item.transform.parent = itemHoldLocation;
-									item.transform.localPosition = new Vector3(0, 0, 0);
-									item.transform.localRotation = Quaternion.identity;
+									heldItem.Place(itemHoldLocation);
 									break;
 								}
 							}
@@ -102,8 +99,7 @@ public class PlayerCharacter : MonoBehaviour
 					// Drop
 					else
 					{
-						heldItem.EnablePhysics();
-						heldItem.transform.parent = null;
+						heldItem.Drop();
 						heldItem = null;
 					}
 				}
