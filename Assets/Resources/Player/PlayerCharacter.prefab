@@ -430,9 +430,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d98e8f06392d2854781605e228c3c592, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mMoveSpeed: 10
+  mMoveSpeed: 20
   mGravityScale: 20
-  mVelocityPersistance: 0.9
+  mVelocityDecay: 5
   mMaxVelocity: 15
 --- !u!143 &143134064391670130
 CharacterController:

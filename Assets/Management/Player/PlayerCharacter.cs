@@ -16,7 +16,7 @@ public class PlayerCharacter : MonoBehaviour
 	public float mMoveSpeed = 10.0f;
 	public float mGravityScale = 20.0f;
 
-	public float mVelocityPersistance = 0.9f;
+	public float mVelocityDecay = 0.1f;
 	public float mMaxVelocity = 15.0f;
 	private Vector3 mVelocity;
 
@@ -44,7 +44,7 @@ public class PlayerCharacter : MonoBehaviour
 			mVelocity += new Vector3(inputProfile.GetInputVector().x, 0, inputProfile.GetInputVector().y) * mMoveSpeed * Time.deltaTime;
 
 			// Decay velocity
-			mVelocity *= mVelocityPersistance;
+			mVelocity *= Mathf.Clamp01(1.0f - mVelocityDecay * Time.deltaTime);
 			// Cap speed
 			if (mVelocity.sqrMagnitude > mMaxVelocity)
 			{
