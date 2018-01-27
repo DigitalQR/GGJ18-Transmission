@@ -21,6 +21,10 @@ public class PlayerCharacter : MonoBehaviour
 	private Vector3 mVelocity;
 
 
+	[System.NonSerialized]
+	public InteractableBehaviour currentInteraction;
+
+
 	public void OnSpawn(PlayerController parent)
 	{
 		_controller = parent;
@@ -33,25 +37,39 @@ public class PlayerCharacter : MonoBehaviour
 
 	void Update ()
 	{
-		mVelocity += new Vector3(inputProfile.GetInputVector().x, 0, inputProfile.GetInputVector().y) * mMoveSpeed * Time.deltaTime;
-
-		// Decay velocity
-		mVelocity *= mVelocityPersistance;
-		// Cap speed
-		if (mVelocity.sqrMagnitude > mMaxVelocity)
+		// Update movement
 		{
-			mVelocity.Normalize();
-			mVelocity *= mMaxVelocity;
+			mVelocity += new Vector3(inputProfile.GetInputVector().x, 0, inputProfile.GetInputVector().y) * mMoveSpeed * Time.deltaTime;
+
+			// Decay velocity
+			mVelocity *= mVelocityPersistance;
+			// Cap speed
+			if (mVelocity.sqrMagnitude > mMaxVelocity)
+			{
+				mVelocity.Normalize();
+				mVelocity *= mMaxVelocity;
+			}
+
+			// Rotate in direction of velocity
+			if (mVelocity.sqrMagnitude > 0.01)
+				transform.rotation = Quaternion.LookRotation(mVelocity.normalized);
+
+
+			mCharacterController.Move(mVelocity * Time.deltaTime);
+
+			// Constant gravity
+			mCharacterController.Move(Vector3.down * mGravityScale * Time.deltaTime);
 		}
 
-		// Rotate in direction of velocity
-		if (mVelocity.sqrMagnitude > 0.01)
-			transform.rotation = Quaternion.LookRotation(mVelocity.normalized);
-		
+		// Update interaction
+		{
+			if (currentInteraction != null)
+			{
+				if (inputProfile.GetKeyPressed(InputProfile.Button.A))
+					currentInteraction.Interact(this);
 
-		mCharacterController.Move(mVelocity * Time.deltaTime);
-
-		// Constant gravity
-		mCharacterController.Move(Vector3.down * mGravityScale * Time.deltaTime);
+				currentInteraction = null; // Clear current interaction (Will get set each frame if valid)
+			}
+		}
 	}
 }
