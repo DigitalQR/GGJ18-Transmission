@@ -47,12 +47,14 @@ public class LaserSurface : InteractableBehaviour
 			// Fire beam
 			mLineRenderer.SetPosition(0, BeamStart.position);
 			RaycastHit hit;
+			Ray ray = new Ray(BeamStart.position, BeamStart.forward);
 
-			if (Physics.Raycast(new Ray(BeamStart.position, BeamStart.forward), out hit, 100.0f))
+
+			if (Physics.Raycast(ray, out hit, 100.0f))
 			{
 				LaserInteraction interaction = hit.collider.GetComponent<LaserInteraction>();
 				if (interaction != null)
-					interaction.LaserInteract(gameObject);
+					interaction.LaserInteract(gameObject, ray, hit);
 
 				mLineRenderer.SetPosition(1, hit.point);
 			}
