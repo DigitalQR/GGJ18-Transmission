@@ -6,15 +6,66 @@ ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
     100000: //RootNode
+    100002: Base
+    100004: Glass
+    100006: Inards
     400000: //RootNode
+    400002: Base
+    400004: Glass
+    400006: Inards
     2100000: plinth
     2100002: 02 - Default
     2100004: '03 - Default Slot #3'
+    2100006: No Name
+    2100008: Glass
+    2100010: Light
+    2100012: 'Material #2'
+    2100014: 'Material #0'
+    2100016: 'Material #1'
     2300000: //RootNode
+    2300002: Base
+    2300004: Glass
+    2300006: Inards
     3300000: //RootNode
+    3300002: Base
+    3300004: Glass
+    3300006: Inards
     4300000: Cylinder001
+    4300002: Base
+    4300004: Glass
+    4300006: Inards
     9500000: //RootNode
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Glass
+    second: {fileID: 2100000, guid: 579ae6aebf278854da03d07bc5a78e2d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Light
+    second: {fileID: 2100000, guid: de20fbdf7838c8c4d916cc433340bd88, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 'Material #0'
+    second: {fileID: 2100000, guid: ca1696af9d742434aa1b283ed5a7985a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 'Material #1'
+    second: {fileID: 2100000, guid: 432d9e40dd8b29542862d81332fd6b64, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 'Material #2'
+    second: {fileID: 2100000, guid: 233e9a4be8bbbfa4a8ba411b765efe28, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: No Name
+    second: {fileID: 2100000, guid: 64f5e9ab812e54d43b96e9ac87d150a3, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
