@@ -123,7 +123,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4797530635560522}
   - component: {fileID: 65628486494887744}
-  - component: {fileID: 114166081679942368}
+  - component: {fileID: 114497548632899048}
   m_Layer: 0
   m_Name: Grab Point
   m_TagString: Untagged
@@ -365,9 +365,9 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1994212861983956}
-  m_LocalRotation: {x: -0, y: -0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: -3}
-  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
+  m_LocalRotation: {x: -0, y: -0.7071068, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: -7.1241913, y: -6.415524, z: 8.887184}
+  m_LocalScale: {x: 1.500001, y: 1.5, z: 1.500001}
   m_Children:
   - {fileID: 4491412576985176}
   m_Father: {fileID: 0}
@@ -834,19 +834,6 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &114166081679942368
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1594512189592340}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 487460469bb31c648b9059ae0fab5391, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  laserBase: {fileID: 4111033943745738}
-  laserBody: {fileID: 4052226896782300}
 --- !u!114 &114452650992745728
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -869,14 +856,24 @@ MonoBehaviour:
   - {fileID: 1698795549540546}
   RequiredBodyParts:
   - {fileID: 114116959080986420, guid: d089fe20b5c91c14a9d74d059792ffe9, type: 2}
-  - {fileID: 114116959080986420, guid: d089fe20b5c91c14a9d74d059792ffe9, type: 2}
-  - {fileID: 114116959080986420, guid: d089fe20b5c91c14a9d74d059792ffe9, type: 2}
   RequiredConeParts:
-  - {fileID: 114585463290142520, guid: 2d7413b1540356e4cad6aafd8df9cf06, type: 2}
-  - {fileID: 114585463290142520, guid: 2d7413b1540356e4cad6aafd8df9cf06, type: 2}
   - {fileID: 114585463290142520, guid: 2d7413b1540356e4cad6aafd8df9cf06, type: 2}
   RequiredHiddenParts:
   - {fileID: 114162446989281460, guid: c679dafe06ef6f749b4b03279bcafb69, type: 2}
+--- !u!114 &114497548632899048
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1594512189592340}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ddb08facf3912c846852fd964f3adc10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseModel: {fileID: 4111033943745738}
+  bodyModel: {fileID: 4052226896782300}
+  rotationOffset: {x: 0, y: 0, z: 0, w: 1}
 --- !u!120 &120316646413159078
 LineRenderer:
   m_ObjectHideFlags: 1

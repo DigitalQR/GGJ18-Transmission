@@ -49,7 +49,7 @@ public class LaserTarget : LaserInteraction
 			rotateAnimTarget.localRotation = Quaternion.AngleAxis(completeTimer * rotationRate, Vector3.up) * rotateAnimTarget.localRotation;
 	}
 
-	public override void LaserInteract(GameObject source)
+	public override void LaserInteract(GameObject source, Ray ray, RaycastHit hit)
 	{
 		hitThisFrame = true;
 	}
