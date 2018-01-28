@@ -18,7 +18,7 @@ public class PlayerCharacter : MonoBehaviour
 
 	public float mVelocityDecay = 0.1f;
 	public float mMaxVelocity = 15.0f;
-	private Vector3 mVelocity;
+	public Vector3 mVelocity { get; private set; }
 
 	
 	[System.NonSerialized]

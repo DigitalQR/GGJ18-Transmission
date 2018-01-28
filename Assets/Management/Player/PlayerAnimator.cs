@@ -20,6 +20,8 @@ public class PlayerAnimator : MonoBehaviour {
 	void Update ()
     {
         anim.SetBool(carryingHash, carrying);
+        anim.SetBool(movingHash, moving);
+
         if (GetComponentInParent<PlayerCharacter>().mVelocity.magnitude > 0.5f)
         {
             moving = true;
@@ -30,12 +32,13 @@ public class PlayerAnimator : MonoBehaviour {
             moving = false;
             Debug.Log("idle");
         }
+        if (GetComponentInParent<PlayerCharacter>().heldItem != null)
         {
             carrying = true;
         }
         if (GetComponentInParent<PlayerCharacter>().heldItem == null)
             carrying = false;
-*/
+
         if (Input.GetKeyDown(KeyCode.J))        
             anim.SetBool(movingHash, true);
         if (Input.GetKeyDown(KeyCode.K))
