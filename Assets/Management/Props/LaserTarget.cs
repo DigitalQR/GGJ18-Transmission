@@ -27,10 +27,12 @@ public class LaserTarget : LaserInteraction
 		if (hitThisFrame)
 		{
 			completeTimer += Time.deltaTime;
-
-			// TODO - Update gamemode stating that it has been completed
+			
 			if (completeTimer >= completeTime)
+			{
 				completeTimer = completeTime;
+				LevelController.main.ReportWinCondition(gameObject);
+			}
 
 			hitThisFrame = false;
 		}
