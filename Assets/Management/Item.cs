@@ -9,7 +9,7 @@ public class Item : MonoBehaviour
 	[SerializeField]
 	private int _ID = -1;
 	public int ID { get { return _ID; } }
-
+	
 	private Rigidbody _mBody;
 	private Rigidbody mBody
 	{

@@ -49,6 +49,7 @@ public class CraftingSurface : InteractableBehaviour
 				mHeldItem = character.heldItem;
 				character.heldItem = null;
 				mHeldItem.Place(mDisplayLocation);
+				mHeldItem.enabled = false;
 				craftProgress = 0;
 			}
 		}
