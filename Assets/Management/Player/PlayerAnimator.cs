@@ -5,6 +5,8 @@ using UnityEngine;
 public class PlayerAnimator : MonoBehaviour {
 
     Animator anim;
+    bool carrying;
+    bool moving;
     int movingHash = Animator.StringToHash("Moving");
     int carryingHash = Animator.StringToHash("Carrying");
 
@@ -17,7 +19,24 @@ public class PlayerAnimator : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-		if (Input.GetKeyDown(KeyCode.J))        
+        anim.SetBool(carryingHash, carrying);
+        if (GetComponentInParent<PlayerCharacter>().mVelocity.magnitude > 0.5f)
+        {
+            moving = true;
+            Debug.Log("moving");
+        }
+        if (GetComponentInParent<PlayerCharacter>().mVelocity.magnitude < 0.5f)
+        {
+            moving = false;
+            Debug.Log("idle");
+        }
+        {
+            carrying = true;
+        }
+        if (GetComponentInParent<PlayerCharacter>().heldItem == null)
+            carrying = false;
+*/
+        if (Input.GetKeyDown(KeyCode.J))        
             anim.SetBool(movingHash, true);
         if (Input.GetKeyDown(KeyCode.K))
             anim.SetBool(movingHash, false);
