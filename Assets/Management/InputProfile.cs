@@ -21,6 +21,7 @@ public class InputProfile : MonoBehaviour
 
 	private bool bRequiresAssign = false;
 	private static HashSet<int> AvaliableIDs = new HashSet<int>{ 0, 1, 2, 3, 4 };
+	public bool isBound { get { return !bRequiresAssign; } }
 
 
 	public enum Button

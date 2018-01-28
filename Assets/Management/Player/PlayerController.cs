@@ -5,8 +5,13 @@ using UnityEngine;
 [RequireComponent(typeof(InputProfile))]
 public class PlayerController : MonoBehaviour
 {
+	private static List<PlayerController> _players = new List<PlayerController>();
+	public static List<PlayerController> players { get { return _players; } private set { _players = value; } }
+
+
 	public InputProfile inputProfile { get { return _inputProfile; } }
 	private InputProfile _inputProfile;
+	public bool isInUse { get { return inputProfile.isBound; } }
 
 	/// <summary>
 	/// The player prefab that will be spawned for this controller by default
@@ -21,8 +26,14 @@ public class PlayerController : MonoBehaviour
 	void Start ()
 	{
 		_inputProfile = GetComponent<InputProfile>();
+		DontDestroyOnLoad(gameObject);
 
-		Spawn(new Vector3(0, 6, 0));
+		players.Add(this);
+	}
+
+	void OnDestroy()
+	{
+		players.Remove(this);
 	}
 	
 
@@ -31,7 +42,7 @@ public class PlayerController : MonoBehaviour
 	/// </summary>
 	/// <param name="location">Where to spawn the controller in</param>
 	/// <returns>False if failed to spawn in the character</returns>
-	bool Spawn(Vector3 location)
+	public bool Spawn(Vector3 location)
 	{
 		if (_character != null)
 			return false;

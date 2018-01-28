@@ -44,7 +44,22 @@ ModelImporter:
     7400006: Walk
     7400008: Craft
     9500000: //RootNode
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 03 - Default
+    second: {fileID: 2100000, guid: f20a1b404d89d1349a8685f0a1d61b90, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Body
+    second: {fileID: 2100000, guid: cdc2bee965bb6aa41b41f72472d05cb1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: skin
+    second: {fileID: 2100000, guid: 1d078982ae3af8340be0930fa58a0ba1, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
