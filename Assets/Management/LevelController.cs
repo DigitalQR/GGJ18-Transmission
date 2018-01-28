@@ -1,12 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LevelController : MonoBehaviour
 {
 	public static LevelController main { get; private set; }
 	public bool isLevelActive { get; private set; }
 
+	[SerializeField]
+	private GameObject levelCompletePopup;
 
 	void Start ()
 	{
@@ -19,6 +22,7 @@ public class LevelController : MonoBehaviour
 			if (player.isInUse)
 				player.Spawn(new Vector3(Random.Range(-3.0f, 3.0f), 5.0f, Random.Range(-3.0f, 3.0f)));
 
+		levelCompletePopup.SetActive(false);
 		isLevelActive = true;
 	}
 
@@ -46,5 +50,12 @@ public class LevelController : MonoBehaviour
 	void OnLevelComplete()
 	{
 		Debug.Log("Level finished");
+		levelCompletePopup.SetActive(true);
 	}
+
+	public void SwitchLevel(string level)
+	{
+		SceneManager.LoadScene(level);
+	}
+
 }
